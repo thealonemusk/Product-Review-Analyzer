@@ -63,12 +63,14 @@ for epoch in range(num_epochs):
         optimizer.step()
 
         epoch_loss += loss.item()
-    
+
     avg_loss = epoch_loss / len(train_loader)
     print(f"Epoch {epoch+1}/{num_epochs} - Loss: {avg_loss}")
 
-# Save the trained model
-model.save_pretrained("./models/sentiment_model")
-tokenizer.save_pretrained("./models/sentiment_model")
+# Save the trained model as a .pkl file
+model_path = "./sentiment_model.pkl"
+with open(model_path, 'wb') as f:
+    pickle.dump(model, f)
 
-pickle.dump(model, open("test.pkl", "wb"))
+# Save the tokenizer
+tokenizer.save_pretrained("./sentiment_model")
