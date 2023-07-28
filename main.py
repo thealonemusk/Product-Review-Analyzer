@@ -4,6 +4,8 @@ from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassific
 from sklearn.model_selection import train_test_split
 import pickle
 
+print('Training')
+
 # Load and preprocess the dataset
 dataset = pd.read_csv("testing_dataset.csv")
 
