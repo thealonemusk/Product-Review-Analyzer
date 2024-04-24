@@ -1,5 +1,4 @@
 import io
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 import torch
@@ -15,8 +14,6 @@ firebase_admin.initialize_app(cred, {
     'storageBucket': 'product-review-analysis-6ac4f.appspot.com'
 })
 
-
-
 app = FastAPI()
 
 
@@ -31,10 +28,6 @@ class SentimentPrediction(BaseModel):
 # Load the tokenizer
 tokenizer = DistilBertTokenizerFast.from_pretrained("distilbert-base-uncased")
 
-# Load the trained model
-# model_path = "./sentiment_model.pkl"
-# with open(model_path, 'rb') as f:
-#     model = pickle.load(f)
 file_name = 'sentiment_model.pkl'
 bucket = storage.bucket()
 blob = bucket.blob(file_name)
